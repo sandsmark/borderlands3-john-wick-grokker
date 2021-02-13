@@ -103,13 +103,13 @@ QJsonObject descendDir(const QString &path, const QString &topPath)
 int main(int argc, char *argv[])
 {
     if (argc < 2) {
-        qWarning() << "please pass argument";
+        qWarning() << "please pass path to directory with the converted json stuff";
         return 1;
     }
 
     const QString path = QFileInfo(argv[1]).absoluteFilePath();
 
-    QFile out("grokked.json");
+    QFile out("missions.json");
     out.open(QIODevice::WriteOnly);
     out.write(QJsonDocument(descendDir(path, path)).toJson(QJsonDocument::Indented));
 
